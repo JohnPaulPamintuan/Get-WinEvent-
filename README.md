@@ -7,22 +7,25 @@
 
 # Using Get-WinEvent for basic filtering
 
-To quickly identify the available logs, we can leverage the <b><ins> -ListLog </b></ins> parameter in conjunction with the Get-WinEvent cmdlet. By specifying * as the parameter value, we retrieve all logs without applying any filtering criteria. This allows us to obtain a comprehensive list of logs and their associated properties. By executing the following command, we can retrieve the list of logs and display essential properties such as <b>LogName, RecordCount, IsClassicLog, IsEnabled, LogMode, and LogType</b>. The <b>|</b> character is a pipe operator. It is used to pass the output of one command (in this case, the <b>Get-WinEvent </b> command) to another command (in this case, the <b>Select-Object</b> command).
+- To quickly identify the available logs, we can leverage the <b><ins> -ListLog </b></ins> parameter in conjunction with the Get-WinEvent cmdlet. By specifying * as the parameter value, we retrieve all logs without applying any filtering criteria. This allows us to obtain a comprehensive list of logs and their associated properties. By executing the following command, we can retrieve the list of logs and display essential properties such as <b>LogName, RecordCount, IsClassicLog, IsEnabled, LogMode, and LogType</b>. The <b>|</b> character is a pipe operator. It is used to pass the output of one command (in this case, the <b>Get-WinEvent </b> command) to another command (in this case, the <b>Select-Object</b> command).
 
 <img src="https://i.imgur.com/L9VVorc.png" height="100%" width="100%" alt="Get-WinEvent%"/>
 
-- This command provides us with valuable information about each log, including the name of the log, the number of records present, whether the log is in the classic <b>.evt</b> format or the newer <b>.evtx</b> format, its enabled status, the log mode (Circular, Retain, or AutoBackup), and the log type (Administrative, Analytical, Debug, or Operational).
+-
+  - This command provides us with valuable information about each log, including the name of the log, the number of records present, whether the log is in the classic <b>.evt</b> format or the newer <b>.evtx</b> format, its enabled status, the log mode (Circular, Retain, or AutoBackup), and the log type (Administrative, Analytical, Debug, or Operational).
 
 
 
-We can explore the event log providers associated with each log using the <b><ins>-ListProvider</b></ins> parameter. Event log providers serve as the sources of events within the logs. Executing the following command allows us to retrieve the list of providers and their respective linked logs.
+- We can explore the event log providers associated with each log using the <b><ins>-ListProvider</b></ins> parameter. Event log providers serve as the sources of events within the logs. Executing the following command allows us to retrieve the list of providers and their respective linked logs.
 
 <img src="https://i.imgur.com/1oq8Wtr.png" height="100%" width="100%" alt="Get-WinEvent%"/>
 
-- This command provides us with an overview of the available providers and their associations with specific logs. It enables us to identify providers of interest for filtering purposes.
+-
+  - This command provides us with an overview of the available providers and their associations with specific logs. It enables us to identify providers of interest for filtering purposes.
 
 
-Now, let's focus on retrieving specific event logs using the Get-WinEvent cmdlet. At its most basic, Get-WinEvent retrieves event logs from local or remote computers. 
+
+<b>Now, let's focus on retrieving specific event logs using the Get-WinEvent cmdlet. At its most basic, Get-WinEvent retrieves event logs from local or remote computers. </b>
 
 # Retrieving events from the System log
 
@@ -32,24 +35,25 @@ Now, let's focus on retrieving specific event logs using the Get-WinEvent cmdlet
  
 # Retrieving events from Microsoft-Windows-WinRM/Operational
 
-<img src="https://i.imgur.com/AsbgfEN.png" height="100%" width="100%" alt="Get-WinEvent%"/> 
+<img src="https://i.imgur.com/n2pzKUN.png" height="100%" width="100%" alt="Get-WinEvent%"/> 
 
 - In this example, events are retrieved from the Microsoft-Windows-WinRM/Operational log. The command retrieves the first 30 events and selects relevant properties for display, including the event's creation time, ID, provider name, level display name, and message.
 
-If you have an exported .evtx file from another computer or you have backed up an existing log, you can utilize the Get-WinEvent cmdlet to read and query those logs. This capability is particularly useful for auditing purposes or when you need to analyze logs within scripts.
 
-# To retrieve log entries from a .evtx file, you need to provide the log file's path using the -Path parameter.
+<b>If you have an exported .evtx file from another computer or you have backed up an existing log, you can utilize the Get-WinEvent cmdlet to read and query those logs. This capability is particularly useful for auditing purposes or when you need to analyze logs within scripts.</b>
+
+# To retrieve log entries from a .evtx file, you need to provide the log file's path using the <ins>-Path</ins> parameter.
 
 <img src="https://i.imgur.com/lcFSlnT.png" height="100%" width="100%" alt="Get-WinEvent%"/> 
 
-# To filter Windows event logs, we can use the -FilterHashtable parameter, which enables us to define specific conditions for the logs we want to retrieve.
+# To filter Windows event logs, we can use the <ins>-FilterHashtable</ins> parameter, which enables us to define specific conditions for the logs we want to retrieve.
 
 <img src="https://i.imgur.com/AAU4d8U.png" height="100%" width="100%" alt="Get-WinEvent%"/> 
 
 
   - The command above retrieves events with IDs 1 and 3 from the Microsoft-Windows-Sysmon/Operational event log, selects specific properties from those events, and displays them in a table format. Note: If we observe Sysmon event IDs 1 and 3 (related to "dangerous" or uncommon binaries) occurring within a short time frame, it could potentially indicate the presence of a process communicating with a Command and Control (C2) server.
  
-# If we want the get event logs based on a date range (5/28/23 - 6/2/2023), this can be done as follows.
+# If we want the get event logs based on a <ins>date range (5/28/23 - 6/2/2023)</ins>, this can be done as follows.
 
 <img src="https://i.imgur.com/RHPGmQU.png" height="100%" width="100%" alt="Get-WinEvent%"/> 
 
