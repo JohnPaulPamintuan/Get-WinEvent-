@@ -4,11 +4,8 @@
 # Objective 
 - To monitor and analyze Windows Event Logs, specifically focusing on security-related logs to identify potential security incidents and suspicious behavior. This project will demonstrate my ability to use PowerShell’s Get-WinEvent to filter and search logs for security detection.
 
-# Requirements
-- Windows machine with PowerShell 
-- Basic knowledge of Windows Event IDs
 
-# Using Get-WinEvent
+# Using Get-WinEvent for basic filtering
 - To quickly identify the available logs, we can leverage the -ListLog parameter in conjunction with the Get-WinEvent cmdlet. By specifying * as the parameter value, we retrieve all logs without applying any filtering criteria. This allows us to obtain a comprehensive list of logs and their associated properties. By executing the following command, we can retrieve the list of logs and display essential properties such as LogName, RecordCount, IsClassicLog, IsEnabled, LogMode, and LogType. The | character is a pipe operator. It is used to pass the output of one command (in this case, the Get-WinEvent command) to another command (in this case, the Select-Object command).
 
 <img src="https://i.imgur.com/L9VVorc.png" height="100%" width="100%" alt="Get-WinEvent%"/>
