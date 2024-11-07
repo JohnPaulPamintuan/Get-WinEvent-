@@ -11,19 +11,20 @@
 # Using Get-WinEvent
 - To quickly identify the available logs, we can leverage the -ListLog parameter in conjunction with the Get-WinEvent cmdlet. By specifying * as the parameter value, we retrieve all logs without applying any filtering criteria. This allows us to obtain a comprehensive list of logs and their associated properties. By executing the following command, we can retrieve the list of logs and display essential properties such as LogName, RecordCount, IsClassicLog, IsEnabled, LogMode, and LogType. The | character is a pipe operator. It is used to pass the output of one command (in this case, the Get-WinEvent command) to another command (in this case, the Select-Object command).
 
-IMAGE 
+<img src="https://i.imgur.com/L9VVorc.png" height="100%" width="100%" alt="Get-WinEvent%"/>
 
   - This command provides us with valuable information about each log, including the name of the log, the number of records present, whether the log is in the classic .evt format or the newer .evtx format, its enabled status, the log mode (Circular, Retain, or AutoBackup), and the log type (Administrative, Analytical, Debug, or Operational).
 
 - We can explore the event log providers associated with each log using the -ListProvider parameter. Event log providers serve as the sources of events within the logs. Executing the following command allows us to retrieve the list of providers and their respective linked logs.
 
-IMAGE
+<img src="https://i.imgur.com/1oq8Wtr.png" height="100%" width="100%" alt="Get-WinEvent%"/>
+
   - This command provides us with an overview of the available providers and their associations with specific logs. It enables us to identify providers of interest for filtering purposes.
 
 - Now, let's focus on retrieving specific event logs using the Get-WinEvent cmdlet. At its most basic, Get-WinEvent retrieves event logs from local or remote computers.
   - Retrieving events from the System log
  
-  IMAGE
+<img src="https://i.imgur.com/PJtB17G.png" height="100%" width="100%" alt="Get-WinEvent%"/>
 
   - This example retrieves the first 50 events from the System log. It selects specific properties, including the event's creation time, ID, provider name, level display name, and message. This facilitates easier analysis and troubleshooting.
  
