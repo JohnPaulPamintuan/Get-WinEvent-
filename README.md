@@ -30,15 +30,26 @@
  
 - Retrieving events from Microsoft-Windows-WinRM/Operational
 
-IMAGE 
+<img src="https://i.imgur.com/AsbgfEN.png" height="100%" width="100%" alt="Get-WinEvent%"/> 
+
   - In this example, events are retrieved from the Microsoft-Windows-WinRM/Operational log. The command retrieves the first 30 events and selects relevant properties for display, including the event's creation time, ID, provider name, level display name, and message.
 
+- f you have an exported .evtx file from another computer or you have backed up an existing log, you can utilize the Get-WinEvent cmdlet to read and query those logs. This capability is particularly useful for auditing purposes or when you need to analyze logs within scripts.
+
+To retrieve log entries from a .evtx file, you need to provide the log file's path using the -Path parameter.
+
+<img src="https://i.imgur.com/lcFSlnT.png" height="100%" width="100%" alt="Get-WinEvent%"/> 
+
 - To filter Windows event logs, we can use the -FilterHashtable parameter, which enables us to define specific conditions for the logs we want to retrieve.
-IMAGE
+
+<img src="https://i.imgur.com/AAU4d8U.png" height="100%" width="100%" alt="Get-WinEvent%"/> 
+
 
   - The command above retrieves events with IDs 1 and 3 from the Microsoft-Windows-Sysmon/Operational event log, selects specific properties from those events, and displays them in a table format. Note: If we observe Sysmon event IDs 1 and 3 (related to "dangerous" or uncommon binaries) occurring within a short time frame, it could potentially indicate the presence of a process communicating with a Command and Control (C2) server.
  
 - If we want the get event logs based on a date range (5/28/23 - 6/2/2023), this can be done as follows.
-IMAGE
+
+<img src="https://i.imgur.com/RHPGmQU.png" height="100%" width="100%" alt="Get-WinEvent%"/> 
+
 
 
